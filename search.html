@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StokPic | Search</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <form action="search.html" class="search-form">
+        <h1 class="logo"><a href="./index.html">StokPic</a></h1>
+        <div class="search-bar">
+            <input type="text" autocomplete="off" name="search" class="search-input" placeholder="Search here...">
+            <button type="submit" class="search"><span>Search</span></button>
+        </div>
+    </form>
+
+    <!-- popup window -->
+     <div class="image-popup hide">
+        <button class="close-btn" id="close-btn"><i class="fa-light fa-xmark"></i></button>
+        <a id="fullscreen" target="_blank" href="">View Fullscreen</a>
+        <img class="large-img"/>
+        <button class="controls prev-btn"><i class="fa-solid fa-caret-left"></i></button>
+        <button class="controls next-btn"><i class="fa-solid fa-caret-right"></i></button>
+     </div>
+    
+    <!-- gallery -->
+    <section class="gallery"></section>
+
+    <div class="load">
+        <button class="load-btn">Load more</button>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
