@@ -1,5 +1,7 @@
 import API_KEY from "./apikey.js";
 
+
+
 let allImages;
 let searchParam = '';
 let newParam = location.search.split('=').pop();
@@ -7,6 +9,7 @@ let currentPage = 1;
 let currentIndex = 0;
 
 const gallery = document.querySelector('.gallery');
+
 
 // Search random images
 const randomImages = () => {
@@ -18,6 +21,7 @@ const randomImages = () => {
         });
 }
 
+
 // Search based on keyword
 const searchImages = () => {
     fetch(`https://api.unsplash.com/search/photos?client_id=${API_KEY}&query=${searchParam}&page=${currentPage}&per_page=30`)
@@ -28,15 +32,19 @@ const searchImages = () => {
         });
 }
 
+
 const displayImages = (data) => {
     data.forEach((item, index) => {
         console.log(item);
 
+        // Display images in gallery
         let img = document.createElement('img');
         img.src = item.urls.regular;
         img.className = 'gallery-img';
         img.alt = item.alt_description;
         gallery.appendChild(img);
+
+        document.querySelector(".search-input").value = searchParam;
 
         // Popup image
         img.addEventListener('click', () => {
@@ -45,6 +53,7 @@ const displayImages = (data) => {
         })
     });
 }
+
 
 // Popup
 const showPopup = (item) => {
@@ -63,6 +72,7 @@ const showPopup = (item) => {
     })
 }
 
+
 // Control Buttons
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
@@ -76,6 +86,7 @@ prevBtn.addEventListener('click', () => {
     }
 })
 
+
 // Popup next button
 nextBtn.addEventListener('click', () => {
     if (currentIndex < (allImages.length - 1)) {
@@ -84,11 +95,13 @@ nextBtn.addEventListener('click', () => {
     }
 })
 
+
 // Load more button
 loadBtn.addEventListener('click', () => {
     currentPage++;
     run();
 })
+
 
 function run() {
     // Reset page number when new keyword is searched
@@ -103,5 +116,6 @@ function run() {
         searchImages();
     }
 }
+
 
 run();
