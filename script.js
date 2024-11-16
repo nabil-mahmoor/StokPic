@@ -1,7 +1,6 @@
 import API_KEY from "./apikey.js";
 
 
-
 let allImages;
 let searchParam = '';
 let newParam = location.search.split('=').pop();
@@ -35,8 +34,7 @@ const searchImages = () => {
 
 const displayImages = (data) => {
     data.forEach((item, index) => {
-        console.log(item);
-
+        
         // Display images in gallery
         let img = document.createElement('img');
         img.src = item.urls.regular;
@@ -44,7 +42,10 @@ const displayImages = (data) => {
         img.alt = item.alt_description;
         gallery.appendChild(img);
 
-        document.querySelector(".search-input").value = searchParam;
+
+        if (searchParam) {
+            document.querySelector(".search-input").value = searchParam;
+        }
 
         // Popup image
         img.addEventListener('click', () => {
@@ -105,12 +106,12 @@ loadBtn.addEventListener('click', () => {
 
 function run() {
     // Reset page number when new keyword is searched
-    if (searchParam !== newParam) {
+    if (searchParam != newParam) {
         currentPage = 1;
     }
 
     searchParam = newParam;
-    if (searchParam === '') {
+    if (searchParam == '') {
         randomImages();
     } else {
         searchImages();
