@@ -8,4 +8,4 @@
 
 ## Demo Screenshot
 
-![StokPic](./demo/search_screenshot.png)
+![StokPic](./demo/demo_screenshot.png)
